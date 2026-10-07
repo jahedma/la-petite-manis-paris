@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Petite Manis — Pâtisserie à Paris</title>
+  <meta name="description" content="Pâtisseries contemporaines au cœur de Paris, 136 rue Saint-Honoré." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23400c1b'/%3E%3Cpath d='M14 38c8-19 28-25 38-9-9-4-25 0-30 15-4 0-7-2-8-6Z' fill='%23f4a8b8'/%3E%3Cpath d='M23 34c7-8 17-10 25-6M20 39c8-7 18-9 26-6' fill='none' stroke='%23fff3e8' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    :root{--ink:#23171b;--plum:#3d0b1c;--plum2:#6f1531;--pink:#e997aa;--cream:#fff7ee;--paper:#f6eadf;--gold:#c89352;--green:#66733d}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 Arial,Helvetica,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%}
+    .prototype{background:#1f1116;color:#fbe7ec;text-align:center;padding:.45rem 1rem;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+    header{position:absolute;z-index:5;top:2.15rem;left:0;right:0;color:white}
+    .nav{max-width:1240px;margin:auto;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    .brand{font:700 1.05rem/1 Georgia,serif;letter-spacing:.12em;text-transform:uppercase}
+    .navlinks{display:flex;align-items:center;gap:1.8rem;font-size:.9rem}
+    .navlinks a:not(.pill){opacity:.9}
+    .pill,.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.2rem;border:1px solid currentColor;border-radius:999px;font-weight:700;letter-spacing:.02em;transition:.25s ease}
+    .pill:hover,.button:hover{transform:translateY(-2px)}
+    .menu-btn{display:none;border:0;background:none;color:white;font-size:1.4rem}
+    .hero{min-height:790px;height:calc(100vh - 34px);max-height:980px;position:relative;display:grid;align-items:center;background:#2c0915;color:white;isolation:isolate}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,3,10,.94) 0%,rgba(38,7,17,.73) 37%,rgba(38,7,17,.08) 73%),url('assets/hero.png') center/cover no-repeat;z-index:-1}
+    .hero-inner{width:min(1240px,100%);margin:auto;padding:8rem 2rem 4rem}
+    .eyebrow{display:flex;align-items:center;gap:.7rem;font-size:.77rem;letter-spacing:.16em;text-transform:uppercase;color:#f5c5d0}
+    .eyebrow:before{content:"";width:42px;height:1px;background:currentColor}
+    h1{font:400 clamp(3.6rem,8vw,7.4rem)/.87 Georgia,serif;letter-spacing:-.06em;max-width:760px;margin:1.4rem 0 1.8rem}
+    h1 em{display:block;color:var(--pink);font-weight:400}
+    .hero p{font-size:1.08rem;max-width:510px;color:#f8e9e9;margin:0 0 2rem}
+    .actions{display:flex;gap:.8rem;flex-wrap:wrap}
+    .button.primary{background:#f3b5c2;color:#32101b;border-color:#f3b5c2}
+    .button.ghost{color:white}
+    .fact-strip{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.2);background:rgba(38,7,17,.72);backdrop-filter:blur(9px)}
+    .facts{max-width:1240px;margin:auto;padding:1rem 2rem;display:grid;grid-template-columns:repeat(3,1fr)}
+    .fact{padding:.2rem 1.5rem;border-left:1px solid rgba(255,255,255,.22)}
+    .fact:first-child{border-left:0;padding-left:0}
+    .fact span{display:block;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:#e7a8b7}
+    .fact strong{font:400 1.08rem Georgia,serif}
+    main section{padding:7rem 2rem}
+    .wrap{max-width:1180px;margin:auto}
+    .intro{display:grid;grid-template-columns:.8fr 1.25fr;gap:6rem;align-items:start}
+    .kicker{color:var(--plum2);font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
+    h2{font:400 clamp(2.7rem,5vw,5rem)/.98 Georgia,serif;letter-spacing:-.045em;margin:0}
+    .intro-copy{font:400 clamp(1.25rem,2.5vw,2rem)/1.45 Georgia,serif;color:#51353e;margin:0}
+    .selection{background:var(--plum);color:white;padding-top:0}
+    .selection-grid{display:grid;grid-template-columns:1fr 1fr;min-height:760px}
+    .selection-image{height:100%;min-height:620px;object-fit:cover}
+    .selection-copy{padding:6rem clamp(2rem,6vw,6rem);display:flex;flex-direction:column;justify-content:center}
+    .selection h2{max-width:500px}
+    .selection-note{color:#d8aeba;margin:1.2rem 0 2.4rem;max-width:460px}
+    .items{border-top:1px solid rgba(255,255,255,.2)}
+    .item{display:grid;grid-template-columns:3rem 1fr auto;align-items:center;gap:1rem;padding:1.15rem 0;border-bottom:1px solid rgba(255,255,255,.2)}
+    .item b{font:400 1.15rem Georgia,serif}
+    .item small{color:#d8aeba}
+    .item i{font:italic 1rem Georgia,serif;color:#f1c8d0}
+    .story{background:var(--paper)}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
+    .story-card{background:var(--cream);padding:4.5rem;position:relative;box-shadow:0 24px 70px rgba(63,25,35,.09)}
+    .story-card:before{content:"M";position:absolute;right:2rem;top:-1.8rem;font:400 9rem/1 Georgia,serif;color:#efd0d7;z-index:0}
+    .story-card>*{position:relative}
+    .story-card p{font-size:1.05rem;color:#674a52}
+    .quote{font:italic 1.8rem/1.35 Georgia,serif;color:var(--plum);margin:2rem 0 0}
+    .visit{background:#161013;color:white}
+    .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+    .visit h2{max-width:600px}
+    .details{display:grid;gap:1rem}
+    .detail{display:grid;grid-template-columns:6rem 1fr;border-top:1px solid #49383f;padding-top:1rem}
+    .detail span{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:#d89aac}
+    .detail strong{font-weight:400}
+    .visit .actions{margin-top:2rem}
+    footer{padding:2rem;background:#161013;color:#a9959c;border-top:1px solid #33262a;font-size:.78rem}
+    .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem}
+    .reveal{opacity:0;transform:translateY(24px);transition:.75s ease}
+    .reveal.seen{opacity:1;transform:none}
+    @media(max-width:850px){
+      header{top:2.8rem}.nav{padding:1rem 1.25rem}.navlinks{display:none;position:absolute;top:64px;left:1rem;right:1rem;padding:1.2rem;background:#290b15;border:1px solid #714257;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.menu-btn{display:block}
+      .hero{min-height:760px;height:100svh}.hero:before{background:linear-gradient(180deg,rgba(28,3,11,.45),rgba(32,5,13,.94) 68%),url('assets/hero.png') 65% center/cover no-repeat}.hero-inner{align-self:end;padding:10rem 1.25rem 9rem}h1{font-size:clamp(3.25rem,16vw,5.2rem)}
+      .facts{grid-template-columns:1fr;padding:.8rem 1.25rem}.fact{display:none}.fact:first-child{display:block}
+      main section{padding:5rem 1.25rem}.intro,.story-grid,.visit-grid{grid-template-columns:1fr;gap:2.5rem}.intro-copy{font-size:1.35rem}
+      .selection{padding:0}.selection-grid{grid-template-columns:1fr}.selection-image{min-height:520px;max-height:680px}.selection-copy{padding:4.5rem 1.25rem}
+      .story-card{padding:3rem 1.5rem}.visit-grid{align-items:start}.footer-inner{flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.pill:hover,.button:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="prototype">Maquette indépendante · informations et visuels à valider</div>
+  <header>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="#top">La Petite Manis</a>
+      <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <div class="navlinks">
+        <a href="#creation">Créations</a><a href="#maison">La maison</a><a href="#visite">Nous trouver</a>
+        <a class="pill" href="https://www.instagram.com/lapetitemanis.paris/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </nav>
+  </header>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="eyebrow">Pâtisserie · Paris 1er</div>
+      <h1>Paris, avec une <em>touche inattendue.</em></h1>
+      <p>Des viennoiseries généreuses et des pâtisseries contemporaines, imaginées pour faire de chaque passage rue Saint-Honoré un petit événement.</p>
+      <div class="actions"><a class="button primary" href="#creation">Découvrir la sélection</a><a class="button ghost" href="#visite">Venir à la boutique</a></div>
+    </div>
+    <div class="fact-strip"><div class="facts"><div class="fact"><span>Adresse</span><strong>136 rue Saint-Honoré</strong></div><div class="fact"><span>Apprécié à Paris</span><strong>4,8 · 409 avis Google</strong></div><div class="fact"><span>Sur place</span><strong>Dégustation en boutique</strong></div></div></div>
+  </section>
+  <main>
+    <section><div class="wrap intro reveal"><div><div class="kicker">Une pause singulière</div><h2>La gourmandise change de couleur.</h2></div><p class="intro-copy">Au cœur de Paris, La Petite Manis joue avec les textures, les parfums et les couleurs. Du feuilletage croustillant aux notes de matcha et de fruits, chaque création invite à regarder avant de croquer.</p></div></section>
+    <section class="selection" id="creation"><div class="selection-grid"><img class="selection-image" src="assets/selection.png" alt="Sélection illustrative de viennoiseries contemporaines" /><div class="selection-copy reveal"><div class="kicker" style="color:#efa9ba">Sélection illustrative</div><h2>Trois envies du moment.</h2><p class="selection-note">Une piste de présentation visuelle inspirée des spécialités souvent citées par les visiteurs. Recettes et disponibilité à confirmer avec la maison.</p><div class="items"><div class="item"><i>01</i><b>Croissant framboise</b><small>fruité · feuilleté</small></div><div class="item"><i>02</i><b>Douceur matcha</b><small>végétal · crémeux</small></div><div class="item"><i>03</i><b>Pain salé</b><small>moelleux · doré</small></div></div></div></div></section>
+    <section class="story" id="maison"><div class="wrap story-grid"><div class="reveal"><div class="kicker">L’esprit Manis</div><h2>Petit format.<br />Grande personnalité.</h2></div><div class="story-card reveal"><p>Une adresse indépendante, vivante et colorée, pensée comme une escale gourmande entre les promenades du centre de Paris.</p><p>La vitrine attire le regard. Les associations surprennent. L’accueil et les créations donnent envie de revenir pour goûter la prochaine nouveauté.</p><p class="quote">« Choisir est difficile. Revenir devient facile. »</p></div></div></section>
+    <section class="visit" id="visite"><div class="wrap visit-grid"><div class="reveal"><div class="kicker" style="color:#e8a4b6">La boutique</div><h2>Une douceur à deux pas du Louvre.</h2><div class="actions"><a class="button primary" href="https://www.google.com/maps/search/?api=1&query=La+Petite+Manis+136+Rue+Saint-Honoré+Paris" target="_blank" rel="noopener">Ouvrir l’itinéraire</a><a class="button ghost" href="tel:+33153009369">Appeler la boutique</a></div></div><div class="details reveal"><div class="detail"><span>Adresse</span><strong>136 Rue Saint-Honoré<br />75001 Paris</strong></div><div class="detail"><span>Téléphone</span><strong>01 53 00 93 69</strong></div><div class="detail"><span>Actualités</span><strong><a href="https://www.instagram.com/lapetitemanis.paris/" target="_blank" rel="noopener">@lapetitemanis.paris</a></strong></div><div class="detail"><span>Horaires</span><strong>Consulter la fiche Google avant votre visite</strong></div></div></div></section>
+  </main>
+  <footer><div class="footer-inner"><span>© La Petite Manis · Concept de page d’accueil</span><span>Visuels générés pour la maquette · Aucun service de commande actif</span></div></footer>
+  <script>
+    const menu=document.querySelector('.menu-btn'),links=document.querySelector('.navlinks');
+    menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('seen')}),{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
